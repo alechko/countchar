@@ -13,8 +13,8 @@
     })();
     function getSelectionText() {
         var text = "";
-        if (document.getSelection) {
-            text = document.getSelection().toString();
+        if (window.getSelection) {
+            text = window.getSelection().toString();
         }
         return text;
     }
