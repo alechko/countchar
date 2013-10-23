@@ -7,7 +7,6 @@
             chrome[roe].sendMessage({count: length});
             // Set count on mouseup
             ev.addEventListener('mouseup', function(e) {
-                console.log(e);
                 chrome[roe].sendMessage({count: getSelectionText().length.toString()});
             });
         }
