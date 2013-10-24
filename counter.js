@@ -18,8 +18,6 @@
             m.count = count;
             words = getWordsCount(text).toString();
             m.words = words;
-
-            // message = window.getSelection().toString().length.toString();
         }        
         return m;       
     }
