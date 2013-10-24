@@ -3,9 +3,9 @@
   "name": "Character counter of selected text",
   "description": "This extension counts the number of characters of selected text.",
   "version": "1.0.3",
+  "permissions": ["storage"],
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"    
+    "default_icon": "icon.png"
   },  
   "icons": {
     "128": "icon128.png",

@@ -1,32 +1,35 @@
 (function() {
+    var m = getMessage();
     // Set message once page loaded
     var roe = chrome.runtime && chrome.runtime.sendMessage ? 'runtime' : 'extension';
-    chrome[roe].sendMessage({count: getMessage()});
+    chrome[roe].sendMessage({count: m.count});
     // Set message on mouseup event
     var ev = window;
     ev.addEventListener('mouseup', function(e) {
-        chrome[roe].sendMessage({count: getMessage()});
-        if (getMessage().length > 0){
-            chrome[roe].sendMessage({words: getWordsCount()});
-        }
+        m = getMessage();
+        chrome[roe].sendMessage({count: m.count, words: m.words});
     });
+
     function getMessage(){
-        var message = '';
-        if (window.getSelection) {
-            message = window.getSelection().toString().length.toString();
-        }        
-        return message;       
-    }
-    function getWordsCount(){
-        var count = 0;
+        var m = [];
         if (window.getSelection) {
             text = window.getSelection().toString();
-            if (text.length > 0){
-                text = text.replace(/(^\s*)|(\s*$)/gi,"");
-                text = text.replace(/[ ]{2,}/gi," ");
-                text = text.replace(/\n /,"\n");
-                count = text.split(' ').length.toString();
-            }
+            count = text.length.toString();
+            m.count = count;
+            words = getWordsCount(text).toString();
+            m.words = words;
+
+            // message = window.getSelection().toString().length.toString();
+        }        
+        return m;       
+    }
+    function getWordsCount(text){
+        var count = 0;
+        if (text.length > 0){
+            text = text.replace(/(^\s*)|(\s*$)/gi,"");
+            text = text.replace(/[ ]{2,}/gi," ");
+            text = text.replace(/\n /,"\n");
+            count = text.split(' ').length;
         }
         return count;
     }    
