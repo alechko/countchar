@@ -1,15 +1,11 @@
 (function() {
-    var m = getMessage();
-    // Set message once page loaded
-    var roe = chrome.runtime && chrome.runtime.sendMessage ? 'runtime' : 'extension';
-    chrome[roe].sendMessage({count: m.count});
-    // Set message on mouseup event
-    var ev = window;
-    ev.addEventListener('mouseup', function(e) {
-        m = getMessage();
+    window.addEventListener('onload', setMessage, false);
+    window.addEventListener('mouseup', setMessage, false);
+    function setMessage(){
+        var m = getMessage();
+        var roe = chrome.runtime && chrome.runtime.sendMessage ? 'runtime' : 'extension';
         chrome[roe].sendMessage({count: m.count, words: m.words});
-    });
-
+    }
     function getMessage(){
         var m = [];
         if (window.getSelection) {
