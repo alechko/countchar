@@ -4,14 +4,14 @@
     function setMessage(){
         var m = getMessage();
         var roe = chrome.runtime && chrome.runtime.sendMessage ? 'runtime' : 'extension';
-        chrome[roe].sendMessage({count: m.count, words: m.words});
+        chrome[roe].sendMessage({chars: m.chars, words: m.words});
     }
     function getMessage(){
         var m = [];
         if (window.getSelection) {
             text = window.getSelection().toString();
-            count = text.length.toString();
-            m.count = count;
+            chars = text.length.toString();
+            m.chars = chars;
             words = getWordsCount(text).toString();
             m.words = words;
         }        
