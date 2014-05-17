@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Characters and words counter",
   "description": "This extension counts the number of characters and words of selected text on-the-fly.",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "options_page": "options.html",
   "permissions": ["storage", "contextMenus"],
   "browser_action": {

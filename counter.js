@@ -12,7 +12,7 @@
             text = window.getSelection().toString();
             chars = text.length.toString();
             m.chars = chars;
-            m.charsnospace = text.replace(/ /g,'').length;
+            m.charsnospace = text.replace(/ /g,'').length.toString();
             words = getWordsCount(text).toString();
             m.words = words;
         }
