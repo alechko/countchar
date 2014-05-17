@@ -10,7 +10,7 @@ chrome[roe].onMessage.addListener(
         var badge = request[localStorage["ccount"]];
         chrome.browserAction.setBadgeText({text: badge});
         // Set badge and context menu title
-        var contextTitle = "[Characters: "+request.chars+"] [Words: "+request.words+"]";
+        var contextTitle = "[Characters: "+request.chars+"/"+request.charsnospace+"] [Words: "+request.words+"]";
         chrome.contextMenus.update("ccount", {"title": contextTitle});
         chrome.browserAction.setTitle({title: contextTitle});
     }

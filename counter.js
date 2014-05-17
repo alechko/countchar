@@ -4,7 +4,7 @@
     function setMessage(){
         var m = getMessage();
         var roe = chrome.runtime && chrome.runtime.sendMessage ? 'runtime' : 'extension';
-        chrome[roe].sendMessage({chars: m.chars, words: m.words});
+        chrome[roe].sendMessage({chars: m.chars, charsnospace: m.charsnospace ,words: m.words});
     }
     function getMessage(){
         var m = [];
@@ -12,10 +12,11 @@
             text = window.getSelection().toString();
             chars = text.length.toString();
             m.chars = chars;
+            m.charsnospace = text.replace(/ /g,'').length;
             words = getWordsCount(text).toString();
             m.words = words;
-        }        
-        return m;       
+        }
+        return m;
     }
     function getWordsCount(text){
         var count = 0;
@@ -26,5 +27,5 @@
             count = text.split(' ').length;
         }
         return count;
-    }    
+    }
 })();
