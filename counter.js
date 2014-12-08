@@ -21,10 +21,8 @@
     function getWordsCount(text){
         var count = 0;
         if (text.length > 0){
-            text = text.replace(/(^\s*)|(\s*$)/gi,"");
-            text = text.replace(/[ ]{2,}/gi," ");
-            text = text.replace(/\n /,"\n");
-            count = text.split(' ').length;
+            var regex = /\s+/gi;
+            count = text.trim().replace(regex, ' ').split(' ').length;
         }
         return count;
     }
